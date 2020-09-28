@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed Properties</title>
+</head>
+
+<body>
+    <div id="demo">
+        <div> {{books}} </div>
+        <div>{{fullName}}</div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data() {
+            return {
+                firstName: "bjorn",
+                lastName: "Andresen",
+                author: {
+                    name: 'John Doe',
+                    books: [
+                        'Vue 2 - Advanced Guide',
+                        'Vue 3 - Basic Guide',
+                        'Vue 4 - The Mystery'
+                    ]
+                }
+            }
+        },
+        computed: {
+            books() {
+                return this.author.books.length > 0 ? "yes" : "no";
+            },
+            fullName: {
+                get() {
+                    console.log("getter")
+                    return this.firstName +  ' ' + this.lastName;
+                },
+                set(names) {
+                    const value = names.split(" ");
+                    console.log("触发更新...");
+                    this.firstName = value[0];
+                    this.lastName = value[value.length-1];
+                }
+            }
+        }
+    }
+    let vm = Vue.createApp(Model).mount("#demo")
+    vm.fullName = "hello world";
+</script>
+
+</html>
