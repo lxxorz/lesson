@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .basic {
+            color: black;
+            display: block;
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .shadow {
+            box-shadow: 0px 0px 4px #95a5a6;
+        }
+
+        .error {
+            background: #e74c3c;
+            border: 2px solid red;
+            text-decoration: underline;
+        }
+
+        .success {
+            border: 2px solid #27ae60;
+            background: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <my-component :class="arr"></my-component>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data() {
+            return {
+                arr: [
+                    // 'success',
+                    'error',
+                    'basic',
+                ]
+            }
+        }
+    }
+    let vm = Vue.createApp(Model)
+        .component("my-component", {
+            template: `<li :class=$attrs.class>fuck the world</li>
+                      <span class="basic">hello world~</span>`
+        })
+        .mount("#demo")
+</script>
+
+</html>
