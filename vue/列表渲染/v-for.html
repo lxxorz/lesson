@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <div>
+            <li v-for="(item, k) in items">
+                {{k}} : {{item.message}}
+            </li>
+            <li v-for="(value, k, index) in myObject">
+                {{index}} => {{k}} : {{value}}
+            </li>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data() {
+            return {
+                items: [{ message: 'Foo' }, { message: 'Bar' }],
+                myObject: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+                }
+            }
+        }
+    }
+    Vue.createApp(Model).mount("#demo")
+</script>
+
+</html>

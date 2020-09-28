@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <li v-for="item in evenNumber">
+                {{item}}
+            </li>
+            <li v-for="n in 10"> {{n}} => 包包大人是傻逼</li>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+        data(){
+            return {
+                numbers: [
+                    1,2,3,4,5,6,7,8,9,10
+                ]
+            }
+        },
+        computed: {
+            evenNumber(){
+                return this.numbers.filter(v => v%2 === 0)
+            }
+        }
+    }).mount("#demo")
+</script>
+</html>
