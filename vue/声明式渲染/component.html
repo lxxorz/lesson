@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component</title>
+</head>
+<body>
+    <div id="demo">
+        <todo-item v-bind:todo=item v-for="item in items" v-bind:key="item.id"></todo-item>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                items: [
+                    { id: 0, text: 'Vegetables' },
+                    { id: 1, text: 'Cheese' },
+                    { id: 2, text: 'Whatever else humans are supposed to eat' }
+                ]
+            }
+        }
+    });
+    app.component('todo-item', {
+        props: [`todo`],
+        template: `<li>{{todo.text}}</li>`
+    })
+    app.mount("#demo");
+</script>
+</html>

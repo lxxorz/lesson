@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <button v-on:click="toggle">toggle</button>
+        <div v-if="seen">
+            hello world!
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Conditional = {
+        data() {
+            return {
+                seen: false
+            }
+        },
+        methods: {
+            toggle() {
+                this.seen = !this.seen;
+            }
+        }
+    }
+    Vue.createApp(Conditional).mount("#demo")
+</script>
+</html>
