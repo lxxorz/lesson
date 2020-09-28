@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <button @click="toggle">toggle</button>
+        <div v-if='seen'>hello world</div>
+        <p v-else>fuck world</p>
+
+        <div v-if="flag === 0">{{flag}}: bitch</div>
+        <div v-else-if="flag === 1">{{flag}}: bitch</div>
+        <div v-else-if="flag === 2">{{flag}}: bitch</div>
+
+        <div v-show="seen">v-show</div>
+
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+const Model = {
+    data(){
+        return {
+            seen: false,
+            flag: 0,
+        }
+    },
+    methods: {
+        toggle() {
+            this.seen = !this.seen
+            this.flag++;
+        }
+    }
+}
+let vm = Vue.createApp(Model).mount("#demo")
+</script>
+</html>
