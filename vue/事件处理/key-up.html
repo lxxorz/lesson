@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- <input @keyup.ctrl.enter = "foo"> -->
+        <input @keyup.esc="clear" type="text" v-model="message">
+        <button @click.ctrl="handleClick">ctrl click</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data(){
+            return {
+                message: "我爱包包大人"
+            }
+        },
+        methods: {
+            foo() {
+                alert("宁🐎死了")
+            },
+            handleClick() {
+                this.message = "宁🐎死了"
+            },
+            clear(){
+                this.message = ""
+            }
+        }
+    }
+    Vue.createApp(Model).mount("#demo")
+</script>
+</html>

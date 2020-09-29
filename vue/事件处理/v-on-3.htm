@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <div>{{message}} </div>
+       <button @click="split(symbol, $event)">split with {{symbol}} </button>
+       <button @click="trim(symbol, $event)">trim</button>
+       <input type="text" v-model="symbol">
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                message: "hello world!",
+                symbol: '=>'
+            }
+        },
+        methods:{
+            reverse(event) {
+                this.message = this.message.split('').reverse().join('');
+                alert(event.target.tagName)
+            },
+            split(symbol, event){
+                console.log(symbol);
+                this.message = this.message.split('').join(symbol);
+                console.log(event.target.tagName);
+            },
+            trim(comma, event) {
+                console.log(event.target.tagName);
+                this.message = comma + this.message + comma;
+            }
+        }
+
+    }).mount("#demo")
+</script>
+</html>

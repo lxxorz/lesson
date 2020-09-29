@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div:nth-child(1){
+            border: 2px solid red;
+        }
+        div:nth-child(2){
+            border: 2px solid red;
+        }
+        div:nth-child(3){
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+
+        <div @click.capture="outer_c" @click.bubble="outer_b" >outer
+            <div  @click.capture="middle_c" @click.bubble="middle_b">
+                middle
+                <div @click.capture="inner_c"  @click.bubble="inner_b">
+                    inner
+                </div>
+            </div>
+        </div>
+        <button @click.once="fuck">
+            fuck
+        </button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data(){
+            return {
+                
+            }
+        },
+        methods: {
+            outer_c() {
+                console.log("outer capture")
+            },
+            middle_c() {
+                console.log("middle capture")
+            },
+            inner_c() {
+                console.log("inner capture")
+            },
+            outer_b() {
+                console.log("outer bubble")
+            },
+            middle_b() {
+                console.log("middle bubble")
+            },
+            inner_b() {
+                console.log("inner bubble")
+            },
+            fuck(){
+                alert("fuck")
+            }
+        }
+    }
+    Vue.createApp(Model).mount("#demo")
+</script>
+</html>

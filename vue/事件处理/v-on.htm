@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+    <button @click="counter += 1">add 1</button>
+        <div>the button has been clicked {{counter}} times. </div>
+    <button @click="counter = 0">reset</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+        data(){
+            return {
+                counter: 0,
+            }
+        }
+    }).mount("#demo")
+</script>
+</html>

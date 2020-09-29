@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <div >{{message}}</div>
+        <button @click="reverse">
+            reverse
+        </button>
+        <button @click="say('hi')">Hi</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                message: "hello world!"
+            }
+        },
+        methods:{
+            reverse(event) {
+                this.message = this.message.split('').reverse().join('');
+                alert(event.target.tagName)
+            },
+            say(message){
+                this.message = message;
+            }
+        }
+    }).mount("#demo")
+</script>
+</html>
