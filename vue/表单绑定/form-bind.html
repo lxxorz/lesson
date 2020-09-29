@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <input type="text" v-model="message" @keyup.esc="clear" placeholder="edit me">
+        <p>message is : {{message}}</p>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+const Model = {
+    data() {
+        return {
+            message: ""
+        }
+    },
+    methods: {
+        clear() {
+            this.message = ""
+        }
+    }
+}
+Vue.createApp(Model).mount("#demo")
+</script>
+</html>

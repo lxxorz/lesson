@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <form action="">
+                <input type="checkbox" name="running"  v-model="toggle"
+                true-value="yes" false-value="no"> 跑步
+                <input type="checkbox" name="reading" > 读书
+                <input type="checkbox" name="fucking"> 橡皮
+            </form>
+
+            <form action="">
+                <input id="man" name="gender" type="radio" value="公" v-model="radio">
+                <label for="man">man</label>
+                <input id="woman" name="gender" type="radio" value="雌" v-model="radio">
+                <label for="woman">woman</label>
+            </form>
+
+            <form action="">
+                <select name="sport" id="sports" v-model="sports">
+                    <option :value="{name:123}" >apple</option>
+                    <option :value="{age:100}">banana</option>
+                    <option >pinapple</option>
+                </select>
+            </form>
+            <input type="number" v-model="age"> age
+            <p>{{toggle}}</p>
+            <p>{{radio}}</p>
+            <p>{{sports}}</p>
+            <p>{{age}}</p>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Model = {
+        data() {
+            return {
+                toggle: "",
+                radio: "",
+                sports: "",
+                age: 0,
+            }
+        }
+    }
+
+    Vue.createApp(Model).mount("#demo")
+</script>
+</html>
