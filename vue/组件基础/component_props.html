@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            color: red;
+            text-align: center;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div :style="{fontSize: fontSize+'em'}">
+            <content-red :content="content" @enlarge-text="fontSize += 0.1" v-model="comment"></content-red>
+            <p>{{comment}}</p>
+        </div>
+        <div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                fontSize: 1,
+                content: "fuck",
+                comment: ''
+            }
+        },
+        methods: {
+   
+        }
+    })
+    app.component('content-red', {
+        props: ['content', 'modelValue'],
+        emits: ['enlarge-text'],
+        template: `<p class="content">{{content}}</p>
+            <input :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
+            <button @click="$emit('enlarge-text')">enlarge</button>
+        `
+    })
+    app.mount('#demo')
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <post-title :post-title="postTitle"></post-title>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                postTitle: 'hello world'
+            }
+        }
+    })
+    app.component('post-title', {
+        props: ['postTitle'],
+        template: `<h3>{{postTitle}}</h3>`
+    })
+
+    app.mount('#demo')
+</script>
+</html>
