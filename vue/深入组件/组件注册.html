@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <component-n></component-n>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const componentA={
+        template: `<h3>A</h3>`
+    }
+    const componentB={
+        template: `<h3>B</h3>`
+    }
+    const componentC={
+        template: `<h3>C</h3>`
+    }
+    const app = Vue.createApp({
+        data() {
+            return {
+
+            }
+        },
+        components: {
+            'component-a': componentA,
+            'component-b': componentB,
+            'component-c': componentC,
+        }
+    })
+    app.component('component-n', {
+        components: {
+            'component-a': componentA,
+            'component-b': componentB,
+            'component-c': componentC,
+        },
+        template: `
+        <component-a></component-a>
+        <component-b></component-b>
+        <component-c></component-c>
+        `
+
+    })
+    app.mount("#demo")
+</script>
+</html>
