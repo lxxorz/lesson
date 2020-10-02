@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <data-picker id="datapicker" data-status='actived' @change='submitChange'></data-picker>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    // 当组件返回单个根节点时，非 prop attribute 将自动添加到根节点的 attribute 中。
+    const app = Vue.createApp({
+        methods: {
+            submitChange(event) {
+                console.log(event.target.value);
+            }
+        }
+    })
+    //多个根节点需要显式绑定$attrs 也就是非prop attribute』
+    app.component('data-picker', {
+        inheritAttrs: false,
+        template:   `
+        <div>
+            <input  type='text'>
+        </div> 
+        <div>
+            <input  :=$attrs type='text'>
+        </div>
+        
+        `
+    })
+    app.mount('#demo')
+</script>
+</html>

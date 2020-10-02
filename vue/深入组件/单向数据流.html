@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <label for="i-title">请输入标题</label>
+        <input id="i-title" type="text" v-model='title'>
+        <br>
+        <label for="i-content">请输入内容</label>
+        <input type="text" id="i-content" v-model="content">
+
+        <p>{{title}} : {{content}}</p>
+        <post :title='title' :content='content'></post>
+        
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                title: "",
+                content: ""
+            }
+        }
+    })
+    app.component('post',  {
+        props: {
+            title: String,
+            content: String,
+        },
+        data(){
+            return {
+                // postContent: this.content,
+            }
+        },
+        computed: {
+            postTitle() {
+                console.log(this.title, this.content);
+                return this.title.trim().toUpperCase();
+            },
+            postContent() {
+                return this.content;
+            }
+        },
+        template: `<h3>{{postTitle}}</h3>
+                    <p>{{postContent}}</p>`
+    })
+    app.mount('#demo')
+</script>
+</html>

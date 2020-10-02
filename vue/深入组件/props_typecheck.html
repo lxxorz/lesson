@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <post :likes='42'>"fuck the world 『插槽内容』"</post>
+        <post :='config'></post>
+    </div>    
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                likes: 42,
+                config: {
+                    likes: 42,
+                    title: "hello world",
+                    isPublished: true,
+                    author: {
+                        'name': '李鑫鑫',
+                        'gender': 'man',
+                        'speciality': 'computer science'
+                    }
+                }
+            }
+        }
+    })
+
+    app.component('post', {
+        props: {
+            likes: Number,
+            title: String,
+            isPublished: Boolean,
+            commentIds: Array,
+            author: Object,
+            callback: Function,
+            contactsPromise: Promise,
+        },
+        template: `
+        <h3>title: {{title}}</h3>
+        <p>likes: {{likes}}</p>
+        <p>isPublished: {{isPublished}}</p>
+        <li v-for='props in author'> {{props}} </li>
+        <p><slot></slot></p>
+        `
+    })
+    app.mount("#demo")
+</script>
+</html>
