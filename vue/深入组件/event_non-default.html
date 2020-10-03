@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <info-input @submit='handleSubmit'></info-input>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                email: '',
+                password: '',
+            }
+        },
+        methods: {
+            handleSubmit({email, password}) {
+                console.log(email, password);
+            }
+        }
+    })
+    app.component('info-input', {
+        emits: {
+            click: null,
+            submit: ({email, password}) => {
+                if(email  && password) {
+                    return true;
+                } else {
+                    console.warn('Invalid submit information')
+                    return false;
+                }
+            }
+        },
+        methods: {
+            submitForm(){
+                this.$emit('submit', {email: this.email,  password: this.password});
+            }
+        },
+        data() {
+            return {
+                email: '',
+                password: '',
+            }
+        },
+        template:`
+        <input type='text' v-model='email'>
+        <br>
+        <input type='password' v-model='password'>
+        <button @click='submitForm'>submit</button>`
+    })
+    app.mount('#demo')
+</script>
+</html>
