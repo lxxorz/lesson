@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态插槽</title>
+</head>
+<body>
+    <div id="demo">
+        <system-display>
+            <template v-slot:hardware="slot">
+                傻逼处理器: 
+                <li>
+                    {{slot.cpu}}
+                </li>
+            </template>
+            <template v-slot:software='slot'>
+                傻逼操作系统:
+                <li>
+                    {{slot.os}}
+                </li>
+            </template>
+        </system-display>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+
+    })
+    app.component('system-display', {
+        data() {
+            return {
+                os: 'windows',
+                cpu: 'AMD'
+            }
+        },
+        template: 
+        `<ul>
+            <slot name='software' :os='os'> </slot>
+            <slot name='hardware' :cpu='cpu'> </slot>
+        </ul>
+        `
+    })
+    app.mount('#demo')
+</script>
+</html>

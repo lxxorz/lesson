@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽</title>
+</head>
+<body>
+    <div id="demo">
+        <test-cp >
+            <template v-slot:default="{item={message:'no message', os:'linux'}}">
+                message:<li>{{item.message}}</li>
+                os: <li>{{item.os}}</li>
+            </template>
+        </test-cp>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    app.component('test-cp', {
+        data(){
+            return {
+                message: "hello world",
+                os: 'windows'
+            }
+        },
+        template: `
+        <p>
+            <slot :item="{message, os}"></slot>
+        </p>`
+    })
+    app.mount('#demo')
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具名插槽</title>
+    <style>
+        header{
+            font-weight: bold;
+            font-size: 2em;
+            font-style: normal;
+            font-family: 'MicroSoft Yahei';
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <base-layout>
+            <template v-slot:header>header</template>
+            <template v-slot:main>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi totam officiis quae? Neque ipsa velit perspiciatis debitis. Tempore adipisci nobis reprehenderit? Voluptates!</template>
+            <template v-slot:footer>footer</template>
+        </base-layout>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    app.component('base-layout', {
+        template: `
+            <div class="container"> 
+             <header> 
+                <slot name='header'></slot>
+             </header>   
+             <main> 
+                <slot name='main'> </slot>
+             </main>
+             <footer> 
+                <slot name="footer"> </slot>
+             </footer>
+            </div>
+            `
+    })
+    app.mount("#demo")
+</script>
+</html>
