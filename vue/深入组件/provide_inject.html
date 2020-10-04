@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提供/注入</title>
+</head>
+<body>
+    <div id="demo">
+        <todo-list></todo-list>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+    const app = Vue.createApp({
+
+    })
+    const todoListFooter= {
+        inject: ['user'],
+        created() {
+            console.log(`inject content: ${this.user}`);
+        },
+        template: `
+            <p>{{user}}</p>
+            `
+    }
+    app.component('todo-list-footer', todoListFooter)
+    app.component('todo-list', {
+        component: {
+            'todo-list-footer': todoListFooter,
+        },
+        provide: {
+            user: 'tourist'
+        },
+        template: 
+        `<todo-list-footer></todo-list-footer>`
+    })
+    app.mount('#demo')
+</script>
+</html>
