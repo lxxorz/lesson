@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钩子函数</title>
+    <style>
+        body{
+            padding : 0;
+            margin: 0;
+        }
+        .demo-enter-active{
+            animation: enter 2s;
+        }
+        .demo-leave-active{
+            animation: enter 2s reverse;
+        }
+        @keyframes enter{
+            0%{
+                transform: scale(0);
+            }
+            90%{
+                transform: scale(1.2)
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        .basic{
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <button @click="show=!show">
+                Toggle
+            </button>
+            <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+            name="demo">
+                <p v-if="show" class="basic">
+                    Lorem, ipsum dolor.Numquam, sapiente iste?
+                    Lorem, ipsum dolor.Enim, autem quisquam.
+                </p>    
+            </transition>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                show: false,
+            }
+        },
+        methods: {
+            beforeEnter(){
+                console.log("beforeEnter");
+            },
+            enter(){
+                console.log("enter");
+            },
+            afterEnter(){
+                console.log("afterEnter");
+            },
+
+
+            beforeLeave(){
+                console.log("beforeLeave");
+            },
+            leave(){
+                console.log("leave");
+            },
+            afterLeave(){
+                console.log("afterLeave");
+            }
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>
