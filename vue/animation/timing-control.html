@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画速率控制</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background: #34495e;
+            grid-template: 1fr/1fr ;
+            display: grid;
+        }
+        ul{
+            list-style: none;
+            display: grid;
+            grid-template: 1fr/repeat(5, 1fr);
+            gap: 20px;
+        }
+        li{
+            list-style: none;
+            border: 2px solid red;
+            height: 50px;
+            background: #e67e22;
+        }
+        li:nth-child(1){
+            animation: move 2s infinite alternate ease;
+        }
+        li:nth-child(2){
+            animation: move 2s infinite alternate linear;
+        }
+        li:nth-child(3){
+            animation: move 2s infinite alternate ease-in;
+        }
+        li:nth-child(4){
+            animation: move 2s infinite alternate ease-out;
+        }
+        li:nth-child(5){
+            animation: move 2s infinite alternate ease-in-out;
+        }
+        @keyframes move{
+            to{
+                transform: translateY(90vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

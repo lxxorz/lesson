@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            width: 100vw;
+            height: 100vh;
+            background: #34495e
+        }
+        .bg{
+            width:100vw;
+            height: 100vh;
+            background:#2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation-name: background, scale, radius;
+            animation-duration: 4s, 4s, 4s;
+            animation-fill-mode: forwards;
+        }
+        .bg::after{
+            content: "lxxorz.cn";
+            font-size: 2em;
+            color: white;
+
+            opacity: 0;
+            animation-name: opacity;
+            animation-delay: 4s;
+            animation-duration: 2s;
+        }
+        @keyframes background{
+            25%{
+                background: #8e44ad;
+            }
+            50%{
+                background: #9b59b6;
+            }
+            to{
+                background: #3498db;
+            }
+        }
+        @keyframes scale{
+            25%{
+                transform: scale(.5);
+            }
+            50%{
+                transform: scale(1)  rotate(360deg);
+            }
+            75%{
+                transform: scale(.5);
+            }
+            to{
+                transform: scale(1);
+            }
+        }
+        @keyframes radius{
+            25%{
+                border-radius: 50%
+            }
+            50%{
+                border-radius: 0;
+            }
+            75%{
+                border-radius: 50%;
+            }
+        }
+        @keyframes opacity{
+            to{
+                opacity: 0.8;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <main>
+        <div class='bg'></div>
+    </main>
+</body>
+</html>

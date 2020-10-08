@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        body{ 
+            margin: 0;
+            padding: 0;
+            background: #34495e;
+        }
+    main{
+        margin: auto auto;
+        width: 400px;
+        height: 400px;
+        background: blue;
+        border: 2px solid white;
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        background: yellow;
+    }
+    div:hover{
+        animation-name: background, translate, radius;
+        animation-duration: 4s, 4s, 4s;
+    }
+    @keyframes background{
+        25%{
+            background: red;
+        }
+        75%{
+            background: #8e44ad;
+        }
+    }
+    @keyframes translate{
+        25%{
+            transform: translate(300px);
+        }
+        50%{
+            transform: translate(300px, 300px);
+        }
+        75%{
+            transform: translate(0, 300px);
+        }
+    }
+    @keyframes radius{
+        25%{
+            border-radius: 50%;
+        }
+        50%{
+            border-radius: 0%;
+        }
+        75%{
+            border-radius: 50%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <div></div>
+    </main>
+</body>
+</html>

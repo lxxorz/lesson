@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+             margin: 0px;
+             padding: 0px;
+         }
+         body {
+             width: 100vw;
+             height: 100vh;
+             background: #2c3e50;
+         }
+         main{
+             width: 100px;
+             height: 100px;
+             background: white;
+         }
+         main:active{
+             animation-name: test;
+             animation-duration: 2s;
+         }
+         /* @keyframes test{
+             from{
+                 background: white;
+             }
+             to{
+                 transform: scale(2);
+                 background: red;
+             }
+         } */
+          @keyframes test{
+              0%{
+                  background: white;
+              }
+              25%{
+                  transform: scale(2);
+                  background: green;
+              }
+              50%{
+                  transform: scale(1);
+                  background: white;
+              }
+              100%{
+                  background: red;
+              }
+          }
+    </style>
+</head>
+<body>
+    <main>
+    </main>
+</body>
+</html>

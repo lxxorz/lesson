@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画延迟</title>
+    <style>
+        body{
+            background: blue;
+            width: 100vw;
+            height: 100vh;
+        }
+        #demo{
+            margin-left: 50%;
+            margin-top: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            background: yellowgreen;
+            border-radius: 50%;
+            animation: ball 2s infinite alternate;
+            animation-delay: 2s;
+        }
+        @keyframes ball{
+            to{
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        
+    </div>
+</body>
+</html>

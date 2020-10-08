@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background:#34495e ;
+        }
+        .container{
+            width: 200px;
+            height:200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #f1c40f;
+            animation: scale 2s ;
+            animation-iteration-count: infinite;
+            animation-direction:alternate-reverse;
+        }
+        @keyframes scale{
+            100%{
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+    </div> 
+</body>
+</html>
