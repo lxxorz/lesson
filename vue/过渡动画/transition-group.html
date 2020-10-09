@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多组件过渡</title>
+    <style>
+        .component-fade-enter-active{
+            animation: opacity reverse 0.5s;
+        }
+        .component-fade-leave-active{
+            animation: opacity 0.5s;
+        }
+        @keyframes opacity{
+            to{
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <transition name="component-fade" mode="out-in">
+            <component :is="view"></component>
+        </transition>
+        <button @click="view='v-a'">v-a</button>
+        <button @click="view='v-b'">v-b</button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                view: 'v-a',
+            }
+        },
+        components: {
+            'v-a': {
+                template: `<div>Component A</div>`
+            },
+            'v-b': {
+                template: `<div>Component B</div>`
+            }
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

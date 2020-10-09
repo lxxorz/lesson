@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fade-enter-active{
+            animation: opacity .5s reverse;
+        }
+        .fade-leave-active{
+            animation: opacity .5s;
+        }
+
+        @keyframes opacity{
+            100%{
+                opacity: 0;
+            }
+        }
+        .bnt{
+            border-radius: 10%;
+            border: 2px solid green;
+            background: #2ecc71;
+            box-shadow: 0px 0px 4px white;
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <transition-group name="fade" mode="out-in">
+            <button class="bnt" v-if='on===true'@click='on=!on'>on</button>
+            <button class="bnt" v-if='on===false'@click='on=!on'>off</button>
+        </transition-group>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                on: false,
+            }
+        }
+    })
+    app.mount('#demo')
+</script>
+</html>

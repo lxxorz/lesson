@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始渲染</title>
+    <style>
+        .test-enter-active{
+            animation: test 2s;
+        }
+        .test-leave-active{
+            animation: test 2s reverse;
+        }
+        @keyframes test{
+            0%{
+                transform: scale(0.5);
+            }
+            50%{
+                transform: scale(1.2)
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        .basic{
+            width: 200px;
+            height:100px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <transition name="test" appear>
+                <p class="basic">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam assumenda optio veritatis?</p>
+            </transition>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+    })
+    app.mount("#demo")
+</script>
+</html>
