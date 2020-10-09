@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象字面量(object literals)</title>
+</head>
+<body>
+    <div id="demo">
+        <p v-demo="{ color: 'red', text: 'hello!' }">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    app.directive('demo', {
+        mounted(el, binding){
+            el.style.color = binding.value.color;
+            el.textContent = binding.value.text;
+            console.log(binding.value.color);
+            console.log(binding.value.text);
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

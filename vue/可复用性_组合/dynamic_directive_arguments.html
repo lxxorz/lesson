@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态指令参数</title>
+</head>
+<body>
+    <div id="demo">
+        <p>scroll the page</p>
+        <p v-pin:[s]="200">Stick me 200px form the {{s}} of the page</p>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+               s: "right", 
+            }
+        }
+    })
+    app.directive("pin", {
+        mounted(el, binding) {
+            console.log(binding);
+            el.style.position = 'fixed'
+            const s = binding.arg || "top";
+            el.style[s] = binding.value+'px';
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

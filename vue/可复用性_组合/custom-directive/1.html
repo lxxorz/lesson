@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>custom directive</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- <input type="text" v-focus> -->
+        <input-msg></input-msg>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    //global directive
+    // app.directive('focus', {
+    //     mounted(el){
+    //         el.focus();
+    //     }
+    // })
+    //local custom directive
+    app.component('input-msg', {
+        template:  `<input v-focus type="text">`,
+        directives: {
+            focus: {
+                mounted(el) {
+                    el.focus();
+                }
+            }
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

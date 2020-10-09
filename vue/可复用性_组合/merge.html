@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>merge</title>
+</head>
+<body>
+    <div id="demo">
+
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const mixin = {
+        data(){
+            return {
+                name: "bjorn",
+                age: 23,
+                desc: "programmer student"
+            }
+        },
+        created(){
+            console.log("mixin object call");
+        }
+    }
+    const app = Vue.createApp({
+        mixins: [mixin],
+        data() {
+            return {
+                name: "lxx", 
+            }
+        },
+        //会进行合并,以组件property优先
+        created(){
+          console.log("component call");
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>
