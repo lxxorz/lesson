@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单验证</title>
+</head>
+<body>
+   <div>
+       <input type="text" id='username'>
+       <label for="username">Username</label>
+       <input type="password" id='password'>
+       <label for="password">Password</label>
+       <button id="submit">submit</button>
+   </div> 
+</body>
+<script src="./AOP.js"></script>
+<script src="./ajax.js"></script>
+<script type="module">
+    const elPassword = document.getElementById('password')
+    const elUsername = document.getElementById('username')
+    const btnSubmit = document.getElementById('submit')
+
+    let validata = function() {
+        if( elUsername.value === '' ) {
+             alert('用户名不能为空')
+            return false;
+        }
+
+        if(elPassword.value === '' ) {
+            alert('密码不能为空')
+            return false;
+        }
+    }
+
+    let formSubmit = function(){
+        let param = {
+            username : elUsername.value,
+            password: elPassword.value
+        }
+        ajax('http://www.baidu.com','get', {'name':'lxxorz'})
+    }
+    
+    formSubmit = before(formSubmit, validata);
+    btnSubmit.onclick = function(){
+        formSubmit();
+    };
+</script>
+</html>

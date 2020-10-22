@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">hello world</div>    
+</body>
+<script>
+   let _getElementById = document.getElementById;
+   document.getElementById = function( id ) {
+       alert('addtional function')
+       return _getElementById.call(document, id)
+   } 
+   let res = document.getElementById('demo')
+   console.log(res);
+
+</script>
+</html>

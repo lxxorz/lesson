@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOP windows.onload</title>
+</head>
+<body>
+<div id="demo">
+    hello world
+</div>    
+</body>
+<script src="./AOP.js"></script>
+<script>
+    window.onload=function(){
+        console.log(" hello bitch")
+    }
+    // window.onload = (window.onload || function(){}).after(
+    //     function(){
+    //         alert("1")
+    //     }
+    // ).after(
+    //     function(){
+    //         alert(2)
+    //     }
+    // ).after(
+    //     function(){
+    //         alert(3)
+    //     }
+    // ).after(
+    //     function(){
+    //         alert(4)
+    //     }
+    // )
+    window.onload = before((window.onload || function(){}), function(){
+        alert(1)
+    })
+    window.onload = before(window.onload, function(){
+        alert(2)
+    })
+    window.onload = before(window.onload, function(){
+        alert(3)
+    })
+    window.onload = before(window.onload, function(){
+        alert('fuck the world')
+    })
+</script>
+</html>
