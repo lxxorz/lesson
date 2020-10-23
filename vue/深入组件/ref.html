@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <base-input></base-input>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+
+    })
+    app.component('base-input', {
+        data(){
+            return {}
+        }
+        ,
+        template: 
+        ` <input ref = "input"> `
+        ,
+        methods: {
+            focusInput() {
+                this.$refs.input.focus()
+            }
+        },
+        mounted(){
+            this.focusInput()
+        }
+    })
+    app.mount('#demo')
+</script>
+</html>

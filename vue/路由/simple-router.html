@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单路由</title>
+</head>
+<body>
+    <div id="demo">
+
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    const HomePageComponent = {template: `<p>hello world</p>`}
+    const NotFoundComponent = { template: `<p>Not Found</p>` }
+    const AboutComponent= { template: `<p>Not Found</p>` }
+
+    const routes = {
+        '/': HomePageComponent,
+        '/about': AboutComponent,
+    }
+    const simpleRouter = {
+        data(){
+            return{
+                currentRoute: window.location.pathname,
+            }
+        },
+        computed: {
+            CurrentComponent(){
+                return routes[this.currentRoute] || NotFoundComponent
+            }
+        },
+        render(){
+            return Vue.h(
+                this.CurrentComponent
+            )
+        }
+    }
+    Vue.createApp(simpleRouter).mount("#demo")
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <anchored-heading :level="1">hello world</anchored-heading>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({})
+    app.component('anchored-heading', {
+        props: {
+            level: {
+                type: Number,
+                required: true,
+            }
+        },
+        render(){
+            const {h} = Vue;
+            //create Vnode
+            return h(
+                'h'+ this.level,//tag Name
+                {},//props or attribute
+                this.$slots.default(),//array of children
+            )
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件加载</title>
+    <style>
+        .tab{
+            width: 200px;
+            height: 50px;
+        }
+        .post{
+            position: relative;
+        }
+        .tab_area{
+            position: relative;
+            left :200px;
+        }
+        .articletab{
+            width: 66px;
+            height: 40px;
+        }
+        .article_area{
+            border: #ddd 2px solid;
+            position: relative;
+            left:200px;
+            width:400px;
+            height: 70px;
+        }
+        .main{
+            width: 600px;
+            height: 100px;
+            border: 2px solid #ddd;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <button class='tab' v-for="(tab, key) in tabs" :key ="key" @click="component=tab" >
+            {{tab}}
+        </button>
+        <keep-alive>
+            <component :is="component"></component>
+        </keep-alive>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                tabs: ['home', 'post', 'archive'],
+                component: 'home'
+            }
+        }
+    })
+    app.component('home', {
+        template: `<header>header</header>`
+    })
+    app.component('post', {
+        data() {
+            return {
+                select: 0,
+            }
+        },
+        template:
+            `
+            <div class='post'>
+                <div class='tab_area'>
+                    <button class='articletab' @click="select=1">comment left</button>
+                    <button class='articletab' @click="select=2">article middle</button>
+                    <button class='articletab' @click="select=3">warning right</button>
+                </div>
+                <div class='article_area'>
+                    <article v-if='select==1'>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, quas.
+                    </article >
+                    <article v-if='select==2' >
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, eius! Labore, expedita.
+                    </article >
+                    <article v-if='select==3' >
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, provident.
+                    </article>
+                </div>
+            </div>      
+            `
+    })
+    app.component('archive', {
+        template: `<footer> footer </footer>`
+    })
+    app.mount('#demo')
+</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 状态管理</title>
+</head>
+<body>
+    <div id="demo-a">
+        <input type="text" v-model="sharedState.message">
+    </div>
+
+    <div id="demo-b">
+        <input type="text" v-model="sharedState.message">
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const store = {
+        debug: true,
+        state : Vue.reactive({
+            message: "hello world"
+        }),
+        
+        setMessageAction(newValue){
+            if(this.debug){
+                console.log("setMessageAcion triggered with                                                                                                         ", newValue);
+            }
+            this.state.message = newValue
+        },
+
+        clearMessageAction(){
+            if(this.debug){
+                console.log("clearMessageAction triggerd");
+            }
+
+            this.state.message = ''
+        }
+    }
+
+    Vue.createApp({
+        data() {
+            return {
+                privateState: {},
+                sharedState: store.state,
+            }
+        },
+        mounted(){
+            store.setMessageAction("fuck world")
+        }
+    }).mount("#demo-a")
+
+    Vue.createApp({
+        data() {
+            return {
+                privateState:{},
+                sharedState: store.state,
+            }
+        }
+    }).mount("#demo-b")
+</script>
+</html>

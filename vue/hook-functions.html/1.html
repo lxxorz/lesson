@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hook functions</title>
+</head>
+<body>
+    <div id="demo">
+        {{name}}
+        <br>
+        {{age}}
+        <br>
+        {{desc}}
+        <button @click="changeName">
+            change name
+        </button>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                name: "",
+                age: 0,
+                desc: ""
+            }
+        },
+        methods:{
+            changeName(){
+                this.name="andresen"
+            }
+        },
+        beforeMount(){
+            console.log("beforeMount");
+            [this.name, this.age, this.desc] = ['lxx', 23, 'hello world']
+        },
+        mounted(){
+            console.log("mounted");
+        },
+        beforeUpdate(){
+            console.log("beforeUpdate");
+        },
+        updated(){
+            console.log("updated");
+        }
+    })
+    app.mount("#demo")
+</script>
+</html>

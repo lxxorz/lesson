@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .fade-enter-active,
+        .fade-leave-active{
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .fade-enter-from
+        {
+            opacity: 0;
+            transform: translate(100px, 50px);
+        }
+        .fade-leave-to{
+            transform: translate(100px, 0px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <button @click="show=!show">toggle</button>
+            <transition name="fade">
+                <p v-if='show'>hello world</p>
+            </transition>
+        </div>
+    </div>
+
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                show: true
+            }
+        }
+    })
+    app.mount('#demo')
+    let a 
+    let b = "hel;lo"
+    console.log((a || b));
+</script>
+</html>
